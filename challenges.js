@@ -221,28 +221,64 @@
 
 // Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.
 
-var romanToInt = function(roman) {
-    value = { 
+// var romanToInt = function(roman) {
+//     value = { 
+//             'M': 1000, 
+//             'D': 500, 
+//             'C': 100, 
+//             'L': 50, 
+//             'X': 10, 
+//             'V': 5, 
+//             'I': 1
+//         }
+    
+//     number = 0;
+    
+//     for (let i = 0; i < roman.length; i++){
+//         current = value[roman[i]];
+//         next = value[roman[i + 1]];
+//         if (current < next){
+//             number += next - current;
+//             i++;
+//         }else{
+//             number += current;
+//         }
+//     }   
+//     return number;
+// };
+
+
+
+
+
+
+// Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999.
+
+var intToRoman = function(num) {
+    let value = {
             'M': 1000, 
+            'CM': 900,
             'D': 500, 
+            'CD': 400,
             'C': 100, 
+            'XC': 90,
             'L': 50, 
-            'X': 10, 
+            'XL': 40,
+            'X': 10,
+            'IX': 9,
             'V': 5, 
-            'I': 1
-        }
+            'IV': 4,
+            'I': 1   
+        },
+        roman = '',
+        i;
     
-    number = 0;
     
-    for (let i = 0; i < roman.length; i++){
-        current = value[roman[i]];
-        next = value[roman[i + 1]];
-        if (current < next){
-            number += next - current;
-            i++;
-        }else{
-            number += current;
+    for (i in value){
+        while (num >= value[i]){
+            roman += i;
+            num -= value[i];
         }
-    }   
-    return number;
+    }
+    return roman;
 };
