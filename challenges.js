@@ -254,31 +254,88 @@
 
 // Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999.
 
-var intToRoman = function(num) {
-    let value = {
-            'M': 1000, 
-            'CM': 900,
-            'D': 500, 
-            'CD': 400,
-            'C': 100, 
-            'XC': 90,
-            'L': 50, 
-            'XL': 40,
-            'X': 10,
-            'IX': 9,
-            'V': 5, 
-            'IV': 4,
-            'I': 1   
-        },
-        roman = '',
-        i;
+// var intToRoman = function(num) {
+//     let value = {
+//             'M': 1000, 
+//             'CM': 900,
+//             'D': 500, 
+//             'CD': 400,
+//             'C': 100, 
+//             'XC': 90,
+//             'L': 50, 
+//             'XL': 40,
+//             'X': 10,
+//             'IX': 9,
+//             'V': 5, 
+//             'IV': 4,
+//             'I': 1   
+//         },
+//         roman = '',
+//         i = 0;
     
-    
-    for (i in value){
-        while (num >= value[i]){
-            roman += i;
-            num -= value[i];
-        }
+//     for (i in value){
+//         while (num >= value[i]){
+//             roman += i;
+//             num -= value[i];
+//         }
+//     }
+//     return roman;
+// };
+
+
+
+// A binary watch has 4 LEDs on the top which represent the hours (0-11), and the 6 LEDs on the bottom represent the minutes (0-59).
+// Each LED represents a zero or one, with the least significant bit on the right.
+
+// var readBinaryWatch = function(num) {
+//     if (num === 0) return ['0:00'];
+//     let answer = [];
+//     // loop hours
+//     for (let i = 0; i < 12; i++){
+//         // loop minutes
+//         for (let j = 0; j < 60; j++){
+//             // see if hour minute combo equals input
+//             if (getLights(i) + getLights(j) === num){
+//                 let string = `${i}:`;
+//                 if (j < 10){
+//                     string += `0${j}`;
+//                 }else{
+//                     string += `${j}`
+//                 }
+//                 answer.push(string);
+//             }
+//         }
+//     }
+//     return answer;
+// };
+
+// // find number of lights to make a number
+// function getLights(num){
+//     let result = 0;
+//     while (num > 0){
+//         result += num % 2; // 17 % 2 = 1
+//         num = Math.floor(num / 2);
+//     }
+//     return result;
+// };
+
+
+// Given a linked list, remove the n-th node from the end of list and return its head.
+
+var removeNthFromEnd = function(head, n) {
+    let start = head;
+    let temp = head;
+    let count = 0;
+    while (temp){
+        count++;
+        temp = temp.next;
     }
-    return roman;
+    let returnIndex = count - n;
+    if (returnIndex === 0) return head.next;
+    while (returnIndex > 1){
+        start = start.next;
+        returnIndex--;
+    }
+    start.next = start.next.next;
+    return head;
 };
