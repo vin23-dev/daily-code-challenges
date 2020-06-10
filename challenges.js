@@ -322,20 +322,33 @@
 
 // Given a linked list, remove the n-th node from the end of list and return its head.
 
-var removeNthFromEnd = function(head, n) {
-    let start = head;
-    let temp = head;
-    let count = 0;
-    while (temp){
-        count++;
-        temp = temp.next;
+// var removeNthFromEnd = function(head, n) {
+//     let start = head;
+//     let temp = head;
+//     let count = 0;
+//     while (temp){
+//         count++;
+//         temp = temp.next;
+//     }
+//     let returnIndex = count - n;
+//     if (returnIndex === 0) return head.next;
+//     while (returnIndex > 1){
+//         start = start.next;
+//         returnIndex--;
+//     }
+//     start.next = start.next.next;
+//     return head;
+// };
+
+
+// Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+
+// You may assume no duplicates in the array.
+
+var searchInsert = function(nums, target) {
+    if (!nums.length) return 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] >= target) return i;
     }
-    let returnIndex = count - n;
-    if (returnIndex === 0) return head.next;
-    while (returnIndex > 1){
-        start = start.next;
-        returnIndex--;
-    }
-    start.next = start.next.next;
-    return head;
+    return nums.length;
 };
